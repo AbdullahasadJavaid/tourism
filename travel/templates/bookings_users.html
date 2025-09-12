@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load static %}
+  {% include 'includes/header.html' %}
+  <style>
+    .button_plus {
+  position: absolute;
+  width: 12%;
+  height: 10%;
+  background: #fff;
+  cursor: pointer;
+  border: 2px solid green;
+
+  /* Mittig */
+  top: 49%;
+  left: 4.5%;
+}
+
+.button_plus:after {
+  content: '';
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 4px;
+  width: 50%;
+  background:green;
+  top: 50%;
+  left: 50%;
+}
+
+.button_plus:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: green;
+  height: 50%;
+  width: 4px;
+}
+
+.button_plus:hover:before,
+.button_plus:hover:after {
+  background: #fff;
+  transition: 0.2s;
+}
+
+.button_plus:hover {
+  background-color:green;
+  transition: 0.2s;
+}
+  </style>
+  <body>
+
+    {% include 'includes/navbar.html' %}
+    <!-- END nav -->
+		<div class="hero">
+	    <section class="home-slider owl-carousel">
+	      <div class="slider-item" style="background-image:url({%static 'images/head1.jpg'%});">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+	          <div class="col-md-6 ftco-animate">
+	          	<div class="text">
+	          		<h2>Castel Travel & Tour </h2>
+		            <h1 class="mb-3">Make Your Tour Easy and Comfortable.</h1>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item" style="background-image:url({%static 'images/head2.jpg'%});">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+	          <div class="col-md-6 ftco-animate">
+	          	<div class="text">
+	          		<h2>Castle Travel </h2>
+		            <h1 class="mb-3">Make Your Experience Better With Us.</h1>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
+	      </div>
+	    </section>
+	  </div>
+<br><br><br>
+    <div class="row no-gutters justify-content-center mb-5 pb-3">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+            <span class="subheading"> Bookings</span>
+          <h2 class="mb-4">Booking Details</h2>
+        </div>
+      </div>  
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                   
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Check_in_date</th>
+                <th>Check_out_date</th>
+                <th>Hotel Name</th>
+                <th>Cancel</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%for n in data%}
+            <tr>
+                <td>{{n.username}}</td>
+                <td>{{n.email}}</td>
+                <td>{{n.phone}}</td>
+                <td>{{n.check_in}}</td>
+                <td>{{n.check_out}}</td>
+                <td>{{n.hotel_name}}</td>
+                <form method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="booking_id" value="{{n.id}}">
+                <td><button class="btn-danger">Cancel</button></td>
+                </form>
+            </tr>
+        {% endfor %}
+        
+        </tbody>
+    </table>
+ <br><br><br>
+    {%include "footer.html"%} 
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js'%}"></script>
+  <script src="{% static 'js/popper.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js'%}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js'%}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js'%}"></script>
+  <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+  <script src="{% static 'js/aos.js'%}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js'%}"></script>
+  <script src="{% static 'js/scrollax.min.js'%}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'js/google-map.js'%}"></script>
+  <script src="{% static 'js/main.js'%}"></script>
+    
+  </body>
+</html>

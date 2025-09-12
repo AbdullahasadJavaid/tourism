@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load static %}
+  {% include 'includes/header.html' %}
+<style>
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+.button1 {
+  color: white; 
+  background-color: #4CAF50;
+}
+.button1:hover {
+  border: 2px solid #4CAF50;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.center{
+	margin-left: -40%;
+	word-spacing: 30px;	
+}
+a{
+	color:white;
+}
+a:link {
+
+  text-decoration: none;
+  
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+	
+	text-decoration: none;
+}
+
+a:active {
+  text-decoration: underline;
+}
+  </style>
+
+  <body>
+
+    {% include 'includes/navbar.html' %}
+    <!-- END nav --> 
+		<div class="hero">
+	    <section class="home-slider owl-carousel">
+	      <div class="slider-item" style="background-image:url({{c_data.city_image.url}});">
+	       	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+	          <div class="col-md-6 ftco-animate">
+	          	<div class="text"><br><br>
+	          		<h2> Famous Points, Hotels, Restaurants & Map</h2>
+					<h1>{{c_data.name}}</h1>
+					<h1>Weather {{t_data}}
+					<h2>{{w_data}}</h2> </h1>	
+	            </div><h2><img src='http://openweathermap.org/img/w/{{icon}}.png'></h2><br><br>
+				<div  class="center">
+					<h2  ><a href="#section-c">Places</a></h2>
+					<h2><a href="#section-h">Hotel</a></h2>
+					<h2 ><a href="#section-r">Restaurants</a></h2>
+					<h2><a href="#section-m">Maps</a></h2>
+					<h2><a href="#section-f">Feedback</a></h2>
+				</div>
+			</div>
+		   </div>
+		</div>
+	 </div>
+	</div>
+</section>
+<section class="ftco-section">
+		<div class="container">
+		  <div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+				<span class="subheading">Most Visited Places</span>
+			  <h2 id="section-c">Famous Points</h2>
+			 
+			</div>
+		  </div>
+		  <div class="row d-flex">
+			{% for n in data %}
+			<div class="col-md-1"></div>
+			<div class="col-md-5 d-flex ftco-animate" >
+			  <div class="blog-entry align-self-stretch">
+				<img src ="{{n.place_image.url}}" class="block-20 rounded" >
+				</a>
+				<div class="text mt-3 text-center">
+					<div class="meta mb-2">
+					<div>{{n.place_name}}</div>
+				  </div>
+				  <h3 class="heading">{{n.place_ds}} </h3>
+				</div>
+			  </div>
+			</div> 
+			{% endfor %}
+		  </div>
+		</div>
+	  </section>
+
+
+    <section class="ftco-section ftco-no-pb ftco-room">
+    	<div class="container-fluid px-0">
+    		<div class="row no-gutters justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Famous Hotels in Area</span>
+            <h2 id="section-h" class="mb-4">Hotels </h2>
+          </div>
+        </div>  
+    		<div class="row no-gutters">
+				{% for n in hotel_data %}
+    			<div class="col-lg-6">
+
+    			
+    			
+    				<div class="room-wrap d-md-flex ftco-animate" style="margin-left: 2%;">
+
+						{% if n.hotel_image %}
+						<a href="#" class="img" style="background-image: url({{n.hotel_image.url}});"></a>
+						{% endif %}
+    					<div class="half left-arrow d-flex align-items-center">
+    						<div class="text p-4 text-center">
+    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
+	    						<p class="mb-0"><span class="price mr-1">{{n.name}} </span></p>
+								<h3 class="mb-3">{{n.hotel_ds}}</h3>
+	    						<p class="pt-1"><a href="/travel/rooms?r={{n.id}}" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+				{% endfor %}
+    			
+    		</div>
+    	</div>
+    </section>
+
+		<section class="ftco-section ftco-menu bg-light">
+			<div class="container-fluid px-md-4">
+				<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span id="section-r" class="subheading">Restaurants in Area</span>
+            <h2>Restaurants</h2>
+          </div>
+        </div>
+			<div class="row">
+			{% for n in rest_data %}
+        	<div class="col-lg-4 col-xl-4 d-flex" style="margin-left: 10%;" onclick=location.hre="{{n.res_map}}" >
+        		<div class="pricing-entry rounded d-flex ftco-animate" >
+        			<div class="img" style="background-image: url({{n.res_image.url}});"></div>
+        			<div class="desc p-4">
+	        			<div class="d-md-flex text align-items-start">
+	        				<h3><span>{{n.res_name}}</span></h3>
+	        				<span class="price">{{n.price}}</span>
+	        			</div>
+	        			<div class="d-block">
+	        				<p>{{n.res_ds}}</p>
+	        			</div>
+        			</div>
+        		</div>
+				
+        	</div>
+		
+			{% endfor %}
+		
+        </div>
+		</section>
+	<br><br>
+    <section  class="insta gram">
+      <div  class="container-fluid">
+        <div class="row no-gutters justify-content-center pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+			
+          	<span id="section-m"  class="subheading">Location</span>
+            <h2><span>MAP</span></h2>
+			<br>
+				<button class="button button1" onclick="location.href='http://www.google.com/maps/?q={{storecity}}'">Show on Maps</button>
+			</div>
+				  </div>
+				</div>
+				</section><br>
+			<section  class="insta gram">
+				<div  class="container-fluid">
+					<div class="row no-gutters justify-content-center pb-5">
+						<div class="col-md-7 text-center heading-section ftco-animate">
+							<span id="section-f"  class="subheading">Customer Reviews</span>
+							<h2 style="align-content:center;"><span>Feedback</span></h2><br>
+						<button class="button button1" onclick="location.href='/travel/review'">Leave a Comment</button>
+					</div>
+				</div>
+			</section>
+
+
+
+				  <br><br>
+    
+  {%include "footer.html" %}  
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js'%}"></script>
+  <script src="{% static 'js/popper.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js'%}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js'%}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js'%}"></script>
+  <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+  <script src="{% static 'js/aos.js'%}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js'%}"></script>
+  <script src="{% static 'js/scrollax.min.js'%}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'js/google-map.js'%}"></script>
+  <script src="{% static 'js/main.js'%}"></script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+</script>
+    
+  </body>
+</html>

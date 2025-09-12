@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <title>Castel Travel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+    <link rel="stylesheet" href="{% static 'css/aos.css'%}">
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  </head>
+<style>    
+    * {    
+  box-sizing: border-box;    
+}    
+    
+input[type=text], select, textarea {    
+
+  width: 75%;    
+  padding: 12px;    
+  border: 1px solid rgb(70, 68, 68);    
+  border-radius: 4px;    
+  resize: vertical;  
+  margin-left: 20rem;
+
+}    
+    
+label {    
+  padding: 12px 12px 12px 0;    
+  display: inline-block; 
+  margin-left: 10rem;
+
+}    
+    
+input[type=submit] {    
+  background-color: rgb(37, 116, 161);    
+  color: white;    
+  padding: 12px 20px;    
+  border: none;    
+  border-radius: 4px;    
+  cursor: pointer;    
+
+}       
+.col-2 {    
+  float: left;    
+  width: 25%;    
+  margin-top: 6px;    
+}    
+    
+.col-7 {    
+
+  margin-top: 6px;    
+}    
+    
+/* Clear floats after the columns */    
+.row1:after {    
+  content: "";    
+  display: table;    
+  clear: both;    
+}    
+    
+
+
+    
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */    
+</style>     
+    
+<body>
+  {% include 'includes/navbar.html' %}
+  <div class="hero-wrap" style="background-image: url('{% static 'images/review.jpg'%}');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          <div class="text">
+            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="home">Home</a></span><span>Reviews</span></p>
+            <h1 class="mb-4 bread">Customer Reviews</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
+  <section id="menu-list" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center marb-35">
+          <h3 style="font-size:x-large;">Comment Below</h3>
+          <section id="menu-list" class="section-padding">
+                  <form action="" method="post" id="usrform">
+                    {% csrf_token %}
+                    <div class="row1">    
+                    <div class="col-2" >    
+                      <label for="fname">Name</label>    
+                    </div>    
+                    <div class="col-7">    
+                      <input type="text" id="fname" name="firstname" placeholder="Your name..">    
+                    </div>    
+    
+                  <div class="row1">    
+                    <div class="col-2">    
+                      <label for="feed_back">Comment</label>    
+                    </div>    
+                    <div class="col-7">    
+                      <textarea id="subject" name="comment" placeholder="Write something.." style="height:200px"></textarea>    
+                    </div>    
+                  </div>    
+    
+                   <br><br><input type="submit" style="background-color: rgb(32, 61, 223);color: white;border-color: blue;" >
+                  </form><br><br>
+                </div>
+
+                </div>          
+              </div>
+                      
+            </div>
+          </section>
+        
+          <br><br>
+     
+ <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+ {%include "footer.html" %} 
+<script src="{% static 'js/jquery.min.js'%}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js'%}"></script>
+<script src="{% static 'js/popper.min.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js'%}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js'%}"></script>
+<script src="{% static 'js/jquery.stellar.min.js'%}"></script>
+<script src="{% static 'js/owl.carousel.min.js'%}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+<script src="{% static 'js/aos.js'%}"></script>
+<script src="{% static 'js/jquery.animateNumber.min.js'%}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js'%}"></script>
+<script src="{% static 'js/scrollax.min.js'%}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{% static 'js/google-map.js'%}"></script>
+<script src="{% static 'js/main.js'%}"></script>  
+</body>
+</html>
+
+

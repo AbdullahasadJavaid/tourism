@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load static %}
+  <head>
+    <title>Castle Travel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'vcss/jquery.timepicker.cs'%}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  </head>
+  <style>
+    .button_plus {
+  position: absolute;
+  width: 12%;
+  height: 10%;
+  background: #fff;
+  cursor: pointer;
+  border: 2px solid green;
+
+  /* Mittig */
+  top: 49%;
+  left: 4.5%;
+}
+
+.button_plus:after {
+  content: '';
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 4px;
+  width: 50%;
+  background:green;
+  top: 50%;
+  left: 50%;
+}
+
+.button_plus:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: green;
+  height: 50%;
+  width: 4px;
+}
+
+.button_plus:hover:before,
+.button_plus:hover:after {
+  background: #fff;
+  transition: 0.2s;
+}
+
+.button_plus:hover {
+  background-color:green;
+  transition: 0.2s;
+}
+  </style>
+  <style>
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+    }
+    .button1 {
+      color: white; 
+      background-color: #4CAF50;
+    }
+    .button1:hover {
+      border: 2px solid #4CAF50;
+      color: white;
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+    .center{
+      margin-left: -40%;
+      word-spacing: 30px;	
+    }
+    a{
+      color:white;
+    }
+    a:link {
+    
+      text-decoration: none;
+      
+    }
+    
+    a:visited {
+      text-decoration: none;
+    }
+    
+    a:hover {
+      
+      text-decoration: none;
+    }
+    
+    a:active {
+      text-decoration: underline;
+    }
+      </style>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="hotel_site">Castle<span>Travel</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+			  <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
+	        </ul>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+		<div class="hero-wrap" style="background-image: url({{h_name.hotel_image.url}});">
+      <div class="overlay"></div> 
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="hotel_site">Home</a></span> <span>Hotel</span></p>
+	            <h1 class="mb-4 bread">{{h_name.name}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-no-pb ftco-room">
+    	<div class="container-fluid px-0">
+    		<div class="row no-gutters justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading"> Rooms</span>
+            <h2 class="mb-4">Hotel Master's Rooms</h2>
+          </div>
+        </div>  
+    		<div class="row no-gutters">
+					{% for n in room_data %}
+    			<div class="col-lg-6">
+    				<div class="room-wrap d-md-flex ftco-animate">
+    					<a href="#" class="img" style="background-image: url({{n.room_image.url}});"></a>
+    					<div class="half left-arrow d-flex align-items-center">
+    						<div class="text p-4 text-center">
+    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
+    							<p class="mb-0"><span class="price mr-1">RS {{n.price}}</span> <span class="per">per night</span></p>
+	    						<h3 class="mb-3"><a href="form">{{n.room_name}}</a></h3>
+                  <form method="POST">
+                  <input type="hidden" name="id" value="{{n.id}}">
+                  {% csrf_token %}
+                  <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                </form>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+				{% endfor %}
+        <button style="margin-left:43rem; margin-top: 10rem;" class="button button1" onclick="location.href='/travel/add_room'">Add Room</button>
+        </div><br><br><br>
+
+
+        <section class="ftco-section ftco-no-pb ftco-room">
+          <div class="container-fluid px-0">
+            <div class="row no-gutters justify-content-center mb-5 pb-3">
+              <div class="col-md-7 heading-section text-center ftco-animate">
+                <span class="subheading">Hotel Special Packages</span>
+                <h2 class="mb-4">Packages</h2>
+              </div>
+            </div>  
+          <div class="row no-gutters">
+        
+            {% for n in pack %}
+              <div class="col-lg-6">
+                <div class="room-wrap d-md-flex ftco-animate" style="margin-left: 2%;">
+                
+                <a href="#" class="img" style="background-image: url({{n.image.url}});"></a>
+                  <div class="half left-arrow d-flex align-items-center">
+                    <div class="text p-4 text-center">
+                      <p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
+                      <p class="mb-0"><span class="price mr-1">{{n.package_name}} </span></p>
+
+    							<p class="mb-0"><span class="price mr-1">RS {{n.price}}</p>
+                    <h3 class="mb-3">{{n.package_description}}</h3>
+                    <form method="POST">
+                      <input type="hidden" name="pkg_id" value="{{n.id}}">
+                      {% csrf_token %}
+                      <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                    </form>
+                   </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            </div><br><br>
+            <button style="margin-left:43rem; margin-top: 10rem;" class="button button1" onclick="location.href='/travel/add_package'">Add Package</button>
+            </div><br><br><br>
+            <section  class="insta gram">
+              <div  class="container-fluid">
+                <div class="row no-gutters justify-content-center pb-5">
+                  <div class="col-md-7 text-center heading-section ftco-animate">
+                    <span id="section-f"  class="subheading">Clients Booking</span>
+                    <h2 style="align-content:center;"><span>Bookings</span></h2><br>
+                  <button  class="button button1" onclick="location.href='/travel/bookings'">Booking Details</button>
+                </div>
+              </div>
+            </section>
+    </section>
+
+<br><br><br>
+    {%include "footer.html"%} 
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js'%}"></script>
+  <script src="{% static 'js/popper.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js'%}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js'%}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js'%}"></script>
+  <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+  <script src="{% static 'js/aos.js'%}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js'%}"></script>
+  <script src="{% static 'js/scrollax.min.js'%}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'js/google-map.js'%}"></script>
+  <script src="{% static 'js/main.js'%}"></script>
+    
+  </body>
+</html>
