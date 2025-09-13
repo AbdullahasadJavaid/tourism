@@ -4,3 +4,4 @@ hi this is new commit
    4 git status
    5 git push origin master
    6 historu
+now the line is not show on local to show run cmd pull
