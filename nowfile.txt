@@ -1,1 +1,6 @@
 hi this is new commit
+ 2 git add nowfile.txt
+   3 git commit -m "new file added"
+   4 git status
+   5 git push origin master
+   6 historu
